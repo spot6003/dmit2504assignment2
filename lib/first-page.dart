@@ -34,10 +34,11 @@ class MyFirstPageState extends State<MyFirstPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //TODO: Replace this Text Widget
-              // and build the label and switch here
-              // as children of the row.
-              Text('testing 1 2 3 '),
+              Text("Enable Buttons"),
+              Switch(value: enabled, onChanged: (bool onChangedValue) {
+                enabled = onChangedValue;
+                setState(() {});
+              })
             ],
           ),
           Row(
