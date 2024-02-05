@@ -37,7 +37,9 @@ class MyFirstPageState extends State<MyFirstPage> {
               Text("Enable Buttons"),
               Switch(value: enabled, onChanged: (bool onChangedValue) {
                 enabled = onChangedValue;
-                setState(() {});
+                setState(() {
+                  msg2 = "Reset";
+                });
               })
             ],
           ),
@@ -49,7 +51,19 @@ class MyFirstPageState extends State<MyFirstPage> {
               // For each button use a 
               // "Visibility Widget" and its child 
               // will be an "ElevatedButton"
-              
+              Visibility(visible: enabled, child: ElevatedButton(onPressed: () {
+                setState(() {
+                  timesClicked++;
+                  msg1 = "Clicked $timesClicked";
+                });
+              }, child: msg1 == '' ? Text("Click me") : Text(msg1))),
+              SizedBox(width: 10),
+              Visibility(visible: enabled, child: ElevatedButton(onPressed: () {
+                setState(() {
+                  timesClicked = 0;
+                  msg1 = '';
+                });
+              }, child: Text(msg2)))
             ],
           ),
           const SizedBox(
